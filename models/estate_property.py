@@ -34,4 +34,4 @@ class EstateProperty(models.Model):
         ("west", "West"),
     ])
     buyer_id = fields.Many2one(comodel_name="res.partner")
-    salesperson_id = fields.Many2one(comodel_name="res.users", ondelete="restrict")
+    salesperson_id = fields.Many2one(comodel_name="res.users", ondelete="restrict", default=lambda self: self.env.user)
