@@ -15,7 +15,7 @@ class EstateProperty(models.Model):
         ("sold", "Sold"),
         ("canceled", "Canceled"),
     ], string="Status", copy=False, required=True, default="new")
-    property_type_id = fields.Many2one(comodel_name="estate.property.type", ondelete="restrict")
+    property_type_id = fields.Many2one(comodel_name="estate.property.type")
     postcode = fields.Char()
     date_availability = fields.Date(
         copy=False, default=lambda self: fields.Date.add(fields.Date.today(), months=3))
@@ -33,3 +33,5 @@ class EstateProperty(models.Model):
         ("east", "East"),
         ("west", "West"),
     ])
+    buyer_id = fields.Many2one(comodel_name="res.partner")
+    salesperson_id = fields.Many2one(comodel_name="res.users", ondelete="restrict")
